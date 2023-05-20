@@ -1,0 +1,14 @@
+.Form{
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.Form > form{
+    display: flex;
+    flex-direction: column;
+}
+.Form_button{
+    width: 280px;
+}

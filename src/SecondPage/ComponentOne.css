@@ -1,0 +1,9 @@
+.heading{
+    text-align: center;
+    margin: 50px;
+}
+.table{
+    width: min-content;
+    margin: 0 auto;
+    height: 525px;
+}
