@@ -2,6 +2,7 @@ import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel, IconButton } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
+import { departmentInfoState, CheckedItemsState } from "./Interface";
 import "./styles.css";
 
 const departments = [
@@ -15,17 +16,6 @@ const departments = [
     sub_departments: ["product design", "graphic design", "web design"],
   },
 ];
-
-interface CheckedItemsState {
-  [parent: string]: boolean;
-}
-
-interface departmentInfoState {
-  [parent: string]: {
-    noOfSubdepartmentsChecked: number;
-    isExpanded: boolean;
-  };
-}
 
 const ComponentTwo: React.FC = () => {
   const [departmentInfo, setDepartmentInfo] = useState<departmentInfoState>({});

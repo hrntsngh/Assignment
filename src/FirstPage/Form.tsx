@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import DialogBox from "./DialogBox";
 import "./Form.css";
 
 const Form: React.FC = () => {
   const navigate: any = useNavigate();
-  const [name, setname] = useState<string>("");
-  const [password, setpassword] = useState<string>("");
-  const [email, setemail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
 
   interface userDetails {
     name: String;
@@ -31,54 +33,58 @@ const Form: React.FC = () => {
       localStorage.setItem(email, JSON.stringify(user));
       navigate("/SecondPage");
     } else {
-      alert("Please enter all the required information correctly.");
+      setOpen(true);
     }
   };
 
   return (
     <div className="Form">
-      <form action="">
-        <TextField
-          sx={{ margin: "10px 0px" }}
-          label="Name"
-          onChange={(e) => {
-            setname(e.target.value);
-          }}
-          variant="standard"
-          value={name}
-          required
-        />
-        <TextField
-          sx={{ margin: "10px 0px" }}
-          onChange={(e) => {
-            setpassword(e.target.value);
-          }}
-          label="Password"
-          variant="standard"
-          value={password}
-          type="password"
-          required
-        />
-        <TextField
-          sx={{ margin: "10px 0px 30px 0px" }}
-          label="Email"
-          onChange={(e) => {
-            setemail(e.target.value);
-          }}
-          value={email}
-          variant="standard"
-          type="email"
-          required
-        />
-        <Button
-          onClick={handleClick}
-          className="Form_button"
-          type="submit"
-          variant="contained"
-        >
-          Login
-        </Button>
-      </form>
+      {open == false ? (
+        <form action="">
+          <TextField
+            sx={{ margin: "10px 0px" }}
+            label="Name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            variant="standard"
+            value={name}
+            required
+          />
+          <TextField
+            sx={{ margin: "10px 0px" }}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            label="Password"
+            variant="standard"
+            value={password}
+            type="password"
+            required
+          />
+          <TextField
+            sx={{ margin: "10px 0px 30px 0px" }}
+            label="Email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            value={email}
+            variant="standard"
+            type="email"
+            required
+          />
+          <Button
+            onClick={handleClick}
+            className="Form_button"
+            type="submit"
+            variant="contained"
+          >
+            Login
+          </Button>
+        </form>
+      ) : (
+        <DialogBox open={open} setOpen={setOpen} />
+      )}
     </div>
   );
 };
