@@ -1,9 +1,14 @@
 .heading{
+    margin: 20px;
     text-align: center;
-    margin: 50px;
 }
+
 .table{
+    height: 525px;
+    margin: 20px 0 30px 0;
+}
+
+.SecondPage{
     width: min-content;
     margin: 0 auto;
-    height: 525px;
 }
